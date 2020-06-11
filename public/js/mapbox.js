@@ -30,7 +30,7 @@ map.fitBounds(bounds, {
       top: 200,
       bottom: 150,
       left: 100,
-      right: 100
+      right: 99
     }
   })
 })
