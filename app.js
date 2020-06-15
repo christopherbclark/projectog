@@ -15,6 +15,7 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -44,6 +45,9 @@ app.use('/api', limiter);
 //Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
 
+//Reads the data from Cookies
+app.use(cookieParser());
+
 //Data sanitization against NOSQL query injection
 app.use(mongoSanitize());
 
@@ -67,10 +71,10 @@ app.use(
 //Adding our own Middleware. Global middleware is typically declared
 // up top. You can have as much middleware as you'd like!
 
-/* 4 */ app.use((req, res, next) => {
+/* 4 TEST MIDDLEWARE */ app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   console.log(req.headers);
-
+  console.log(req.cookies)
   next();
 });
 

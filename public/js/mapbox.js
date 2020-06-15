@@ -43,14 +43,6 @@ locations.forEach(loc => {
       offset: 30
     }).setLngLat(loc.coordinates).setHTML(`<p>Day ${loc.day}: ${loc.description}</p>`).addTo(map)
 
-
-    map.addControl(new mapboxgl.GeolocateControl({
-      positionOptions: {
-      enableHighAccuracy: true
-      },
-      trackUserLocation: true,
-      }));
-
     //Extend the bounds to include the current location
 bounds.extend(loc.coordinates)
 map.fitBounds(bounds, {
